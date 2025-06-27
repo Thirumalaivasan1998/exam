@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 27099-webapp-deployment
+  namespace: 27099-project
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: 27099-webapp-deployment
+        image: thirumalaivasan325/java-app1:v1
+        ports:
+        - containerPort: 8001
+        env:
+            - name: APP_KEY 
+              valueFrom:
+                secretKeyRef:
+                  name: webapp-secret-27099
+                  key: APP_KEY
+            - name: WELCOME_MSG
+              valueFrom:
+                configMapKeyRef:
+                  name: webapp-config-27099
+                  key: WELCOME_MSG
+
