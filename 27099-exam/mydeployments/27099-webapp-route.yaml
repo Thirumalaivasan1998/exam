@@ -1,11 +1,11 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: webapp-route-16751
+  name: webapp-route-27099
 spec:
   to:
     kind: Service
-    name: webapp-service-16751
+    name: webapp-service-27099
   port:
     targetPort: 80
   tls:
